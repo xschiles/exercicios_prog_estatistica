@@ -106,7 +106,7 @@ tempo <- system.time({
 cat("Resultado:", resultado, "\nTempo de execução:",
     tempo["elapsed"], "segundos\n")
 
-
+inicio <- Sys.time()
 fibonacci <- function(n) {
   if (n == 1) {
     return(c(1))
@@ -123,8 +123,51 @@ fibonacci <- function(n) {
 }
 # Medindo o tempo e mostrando a sequência
 n <- 1000
-inicio <- Sys.time()
 resultado <- fibonacci(n)
 fim <- Sys.time()
 cat("\nTempo total:", fim - inicio, "segundos\n")
+
+fatorial <- function(n) {
+  if (n < 0) {
+    stop("n precisa ser mais ou igual a zero.")
+  }
+  fat <- 1
+  if (n == 0) {
+    return(fat)
+  }
+  i <- 1
+  while (i <= n) {
+    fat <- fat * i
+    i <- i + 1
+  }
+  return(fat)
+}
+fatorial(6)
+
+
+maior <- function(v) {
+  n <- length(v)
+  max <- v[1]
+  for (i in 2:n) {
+    if (v[i] > max) {
+      max <- v[i]
+    }
+  }
+  return(max)
+}
+maior(c(9:1))
+
+maior_recursivo <- function(v) {
+  n <- length(v)
+  if (n == 1) {
+    return(v[1])
+  }
+  w <- v[2:n]
+  max_w <- maior_recursivo(w)
+  if (v[1] > max_w) {
+    return(v[1])
+  }
+  return(max_w)
+}
+maior_recursivo(c(1, 9, 11, 24, 2, 5, 24.1, 7, 7, 2))
 
