@@ -171,3 +171,10 @@ maior_recursivo <- function(v) {
 }
 maior_recursivo(c(1, 9, 11, 24, 2, 5, 24.1, 7, 7, 2))
 
+fibo_rec <- function(n) {
+  if (n == 1 || n == 2) {
+    return(1)
+  }
+  return(fibo_rec(n - 1) + fibo_rec(n - 2))
+}
+fibo_rec(10)
