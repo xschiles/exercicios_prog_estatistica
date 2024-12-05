@@ -1,25 +1,16 @@
 #AQUI COMEÇA PARTE DE RECURSÃO
 #fatorial com algoritmo de recursão 1
-fatorial <- function(n) {
+fat_rec <- function(n) {
   if (n < 0) {
     stop("n deve ser um inteiro não negativo.")
   }
   if (n == 0 || n == 1) {
     return(1)
   } else {
-    return(n * fatorial(n - 1))
+    return(n * fat_rec(n - 1))
   }
 }
-fatorial(15)
-
-#fatorial com recursão 2
-fatorial <- function(n) {
-  if (n == 0) {
-    return(1)
-  }
-  return(n * fatorial(n - 1))
-}
-fatorial(6)
+fat_rec(15)
 
 #MAX SEM USAR RECURSÃO
 maximo <- function(vetor) {
@@ -103,30 +94,6 @@ tempo <- system.time({
   resultado <- fibonacci(50)
 })
 
-cat("Resultado:", resultado, "\nTempo de execução:",
-    tempo["elapsed"], "segundos\n")
-
-inicio <- Sys.time()
-fibonacci <- function(n) {
-  if (n == 1) {
-    return(c(1))
-  } else if (n == 2) {
-    return(c(1, 1))
-  } else {
-    fib_seq <- c(1, 1)  # Os dois primeiros números da sequência
-    for (i in 3:n) {
-      fib_seq <- c(fib_seq, fib_seq[i - 1] + fib_seq[i - 2])
-      cat("Fibonacci(", i, "):", fib_seq[i], "\n")  # Mostra o valor atual
-    }
-    return(fib_seq)
-  }
-}
-# Medindo o tempo e mostrando a sequência
-n <- 1000
-resultado <- fibonacci(n)
-fim <- Sys.time()
-cat("\nTempo total:", fim - inicio, "segundos\n")
-
 fatorial <- function(n) {
   if (n < 0) {
     stop("n precisa ser mais ou igual a zero.")
@@ -178,3 +145,22 @@ fibo_rec <- function(n) {
   return(fibo_rec(n - 1) + fibo_rec(n - 2))
 }
 fibo_rec(10)
+
+serie1 <- function(n) {
+  if (n < 0 && n %% 1 == 0) {
+    stop("n precisa ser um número inteiro não negativo.")
+  }
+  if (n == 0) {
+    return(0)
+  }
+  return(serie1(n - 1) + n)
+}
+serie1(10)
+
+serie2 <- function(n) {
+  if (n == 0) {
+    return(1)
+  }
+  return(serie2(n - 1) + 1 / fat_rec(n))
+}
+serie2(2)
