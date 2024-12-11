@@ -829,3 +829,19 @@ multmat <- function(a6, b6) {
 a6 <- matrix(1:9, 3, 3)
 b6 <- matrix(1:9, 3, 3)
 multmat(a6, b6)
+
+soma_ate_n <- function(nvetor) {
+  n <- length(nvetor)
+  soma <- 0
+  for (i in 1:n) {
+    soma <- soma + nvetor[i]
+  }
+  return(soma)
+}
+soma_ate_n(c(1:50))
+
+soma_ate_n <- function(nvetor) {
+  n <- length(nvetor)
+  return((n * (n + 1)) / 2)
+}
+soma_ate_n(c(1:50))
